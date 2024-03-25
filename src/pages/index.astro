@@ -4,6 +4,8 @@ import Prices from '../components/Prices.astro';
 import About from '../components/About.astro';
 import Gallery from '../components/Gallery.astro';
 import Newsletter from '../components/Newsletter.astro';
+import Testimonials from '../components/Testimonials.astro';
+import Footer from '../components/Footer.astro';
 ---
 
 <Layout title="HappyClicks | Photo Booth">
@@ -15,7 +17,7 @@ import Newsletter from '../components/Newsletter.astro';
 				<a class="border hover:border-violet-600 text-xl flex-row justify-center text-white cursor-pointer hover:bg-violet-600 focus:ring-4 focus:outline-none font-medium rounded-lg px-5 py-2.5 text-center inline-flex items-center  mr-2 mb-2 hover:shadow-lg transition-all duration-200 ease-in-out hover:scale-110 scale-90 gap-x-2 opacity-90 hover:opacity-100" href="/contact">Check our prices</a>
 			</div>
 			<video autoplay loop muted class="absolute z-10 w-auto min-w-full min-h-full max-w-none">
-				<source src="../../public/video.mp4" type="video/mp4">
+				<source src="/video.mov" type="video/mp4">
 				Your browser does not support the video tag.
 			</video>
 		</section>
@@ -23,5 +25,7 @@ import Newsletter from '../components/Newsletter.astro';
 		<Newsletter />
 		<Prices/>
 		<Gallery/>
+		<Testimonials />
+		<Footer />
 	</main>
 </Layout>
