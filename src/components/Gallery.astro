@@ -1,16 +1,8 @@
 ---
-// import PhotoSwipeLightbox from 'photoswipe/lightbox';
-// import 'photoswipe/style.css';
-
-// const lightbox = new PhotoSwipeLightbox({
-//   gallery: '#my-gallery',
-//   children: 'a',
-//   pswpModule: () => import('photoswipe')
-// });
-// lightbox.init();
+import 'photoswipe/style.css';
 ---
 
-<section>
+<section class="my-48">
     <div class="mx-auto max-w-screen-md text-center mb-8 lg:mb-12">
         <h2 class="mb-4 text-4xl tracking-tight font-extrabold text-black">
             Step into a world of FUN with our <br /> Photo Booth experience!
@@ -20,98 +12,116 @@
             break down
         </p>
     </div>
-    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mx-auto max-w-screen-xl">
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mx-auto max-w-screen-xl pswp-gallery" id="gallery">
         <div class="grid gap-4">
-            <div>
+            <a
+                data-pswp-width="2500"
+                data-pswp-height="1666"
+                target="_blank"
+                href="/gallery/1.jpg"
+                class="transition-all"
+            >
                 <img
                     class="h-auto max-w-full rounded-lg hover:shadow-lg transition-all duration-200 ease-in-out hover:scale-110 scale-90 opacity-90 hover:opacity-100"
                     src="/gallery/1.jpg"
-                    alt=""
+                    alt="Happy Click Customers"
                 />
-            </div>
-            <div>
+            </a>
+            <a data-pswp-width="800" data-pswp-height="1080" target="_blank" href="/gallery/11.jpg">
                 <img
                     class="h-auto max-w-full rounded-lg hover:shadow-lg transition-all duration-200 ease-in-out hover:scale-110 scale-90 opacity-90 hover:opacity-100"
                     src="/gallery/11.jpg"
-                    alt=""
+                    alt="Happy Clicks Customers"
                 />
-            </div>
-            <div>
+            </a>
+            <a data-pswp-width="2500" data-pswp-height="1666" target="_blank" href="/gallery/3.jpg">
                 <img
                     class="h-auto max-w-full rounded-lg hover:shadow-lg transition-all duration-200 ease-in-out hover:scale-110 scale-90 opacity-90 hover:opacity-100"
                     src="/gallery/3.jpg"
-                    alt=""
+                    alt="Happy Clicks Customers"
                 />
-            </div>
+            </a>
         </div>
         <div class="grid gap-4">
-            <div>
+            <a data-pswp-width="2500" data-pswp-height="1666" target="_blank" href="/gallery/4.jpg">
                 <img
                     class="h-auto max-w-full rounded-lg hover:shadow-lg transition-all duration-200 ease-in-out hover:scale-110 scale-90 opacity-90 hover:opacity-100"
                     src="/gallery/4.jpg"
-                    alt=""
+                    alt="Happy Clicks Customers"
                 />
-            </div>
-            <div>
+            </a>
+            <a data-pswp-width="2500" data-pswp-height="1666" target="_blank" href="/gallery/12.jpg">
                 <img
                     class="h-auto max-w-full rounded-lg hover:shadow-lg transition-all duration-200 ease-in-out hover:scale-110 scale-90 opacity-90 hover:opacity-100"
                     src="/gallery/12.jpg"
-                    alt=""
+                    alt="Happy Clicks Customers"
                 />
-            </div>
-            <div>
+            </a>
+            <a data-pswp-width="2500" data-pswp-height="1666" target="_blank" href="/gallery/6.jpg">
                 <img
                     class="h-auto max-w-full rounded-lg hover:shadow-lg transition-all duration-200 ease-in-out hover:scale-110 scale-90 opacity-90 hover:opacity-100"
                     src="/gallery/6.jpg"
-                    alt=""
+                    alt="Happy Clicks Customers"
                 />
-            </div>
+            </a>
         </div>
         <div class="grid gap-4">
-            <div>
+            <a data-pswp-width="2500" data-pswp-height="1666" target="_blank" href="/gallery/7.jpg">
                 <img
                     class="h-auto max-w-full rounded-lg hover:shadow-lg transition-all duration-200 ease-in-out hover:scale-110 scale-90 opacity-90 hover:opacity-100"
                     src="/gallery/7.jpg"
-                    alt=""
+                    alt="Happy Clicks Customers"
                 />
-            </div>
-            <div>
+            </a>
+            <a data-pswp-width="2500" data-pswp-height="1666" target="_blank" href="/gallery/8.jpg">
                 <img
                     class="h-auto max-w-full rounded-lg hover:shadow-lg transition-all duration-200 ease-in-out hover:scale-110 scale-90 opacity-90 hover:opacity-100"
                     src="/gallery/8.jpg"
-                    alt=""
+                    alt="Happy Clicks Customers"
                 />
-            </div>
-            <div>
+            </a>
+            <a data-pswp-width="800" data-pswp-height="1080" target="_blank" href="/gallery/9.jpg">
                 <img
                     class="h-auto max-w-full rounded-lg hover:shadow-lg transition-all duration-200 ease-in-out hover:scale-110 scale-90 opacity-90 hover:opacity-100"
                     src="/gallery/9.jpg"
-                    alt=""
+                    alt="Happy Clicks Customers"
                 />
-            </div>
+            </a>
         </div>
         <div class="grid gap-4">
-            <div>
+            <a data-pswp-width="800" data-pswp-height="1080" target="_blank" href="/gallery/10.jpg">
                 <img
                     class="h-auto max-w-full rounded-lg hover:shadow-lg transition-all duration-200 ease-in-out hover:scale-110 scale-90 opacity-90 hover:opacity-100"
                     src="/gallery/10.jpg"
-                    alt=""
+                    alt="Happy Clicks Customers"
                 />
-            </div>
-            <div>
+            </a>
+            <a data-pswp-width="2500" data-pswp-height="1666" target="_blank" href="/gallery/2.jpg">
                 <img
                     class="h-auto max-w-full rounded-lg hover:shadow-lg transition-all duration-200 ease-in-out hover:scale-110 scale-90 opacity-90 hover:opacity-100"
                     src="/gallery/2.jpg"
-                    alt=""
+                    alt="Happy Clicks Customers"
                 />
-            </div>
-            <div>
+            </a>
+            <a data-pswp-width="2500" data-pswp-height="1666" target="_blank" href="/gallery/5.jpg">
                 <img
                     class="h-auto max-w-full rounded-lg hover:shadow-lg transition-all duration-200 ease-in-out hover:scale-110 scale-90 opacity-90 hover:opacity-100"
                     src="/gallery/5.jpg"
-                    alt=""
+                    alt="Happy Clicks Customers"
                 />
-            </div>
+            </a>
         </div>
     </div>
 </section>
+
+<script>
+    import PhotoSwipeLightBox from 'photoswipe/lightbox';
+
+    const lightbox = new PhotoSwipeLightBox({
+        gallery: '#gallery',
+        children: 'a',
+        pswpModule: () => import('photoswipe'),
+    });
+
+    lightbox.init();
+</script>
