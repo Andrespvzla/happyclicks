@@ -12,7 +12,10 @@ const { title } = Astro.props;
 <html lang="en">
     <head>
         <meta charset="UTF-8" />
-        <meta name="description" content="Astro description" />
+        <meta
+            name="description"
+            content="Capture unforgettable moments with our premier Photo Booth services in Atlanta, Georgia. From weddings to corporate events, our cutting-edge technology ensures every smile is preserved in stunning clarity. Book now for an experience that adds an extra touch of magic to your special occasion!"
+        />
         <meta name="viewport" content="width=device-width" />
         <link rel="icon" type="image/ico" href="/favicon_io/favicon-32x32.png" />
         <meta name="generator" content={Astro.generator} />
@@ -21,7 +24,8 @@ const { title } = Astro.props;
     <body>
         <Header />
         <slot />
-    </body><style is:global>
+    </body>
+    <style is:global>
         @import url('https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap');
 
         html {
@@ -41,8 +45,6 @@ const { title } = Astro.props;
     <script>
         const boton = document.querySelector('#boton') as HTMLButtonElement;
         const nav = document.querySelector('#navbar-default') as HTMLDivElement;
-
-        // const links = document.querySelectorAll('#navbar-default > ul > li > a');
 
         const botonAbout = document.querySelector('#botonAbout') as HTMLButtonElement;
         const botonPrices = document.querySelector('#botonPrices') as HTMLButtonElement;
