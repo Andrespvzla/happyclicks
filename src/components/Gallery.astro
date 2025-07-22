@@ -1,127 +1,372 @@
 ---
-import 'photoswipe/style.css';
+import "photoswipe/style.css";
+
+const images = [
+  { src: "/Weddings/IMG_4482.JPG", w: 2500, h: 1666, category: "weddings" },
+  { src: "/Weddings/IMG_4483.JPG", w: 2500, h: 1666, category: "weddings" },
+  { src: "/Weddings/IMG_4484.JPG", w: 2500, h: 1666, category: "weddings" },
+  { src: "/Weddings/IMG_4486.JPG", w: 2500, h: 1666, category: "weddings" },
+  { src: "/Weddings/IMG_4487.JPG", w: 2500, h: 1666, category: "weddings" },
+  { src: "/Weddings/IMG_4488.JPG", w: 2500, h: 1666, category: "weddings" },
+  { src: "/Weddings/IMG_4490.JPG", w: 2500, h: 1666, category: "weddings" },
+  { src: "/Weddings/IMG_4491.JPG", w: 2500, h: 1666, category: "weddings" },
+  { src: "/Weddings/IMG_4496.JPG", w: 2500, h: 1666, category: "weddings" },
+  { src: "/Weddings/IMG_4497.JPG", w: 2500, h: 1666, category: "weddings" },
+  { src: "/Weddings/IMG_4498.JPG", w: 2500, h: 1666, category: "weddings" },
+  { src: "/Weddings/IMG_4499.JPG", w: 2500, h: 1666, category: "weddings" },
+  { src: "/Weddings/IMG_4500.JPG", w: 2500, h: 1666, category: "weddings" },
+  { src: "/Weddings/IMG_4501.JPG", w: 2500, h: 1666, category: "weddings" },
+  { src: "/Weddings/IMG_4502.JPG", w: 2500, h: 1666, category: "weddings" },
+  { src: "/Weddings/IMG_4503.JPG", w: 2500, h: 1666, category: "weddings" },
+  { src: "/Weddings/IMG_4504.JPG", w: 2500, h: 1666, category: "weddings" },
+  { src: "/Weddings/IMG_4507.JPG", w: 2500, h: 1666, category: "weddings" },
+  { src: "/Weddings/IMG_4509.JPG", w: 2500, h: 1666, category: "weddings" },
+  { src: "/Weddings/IMG_4510.JPG", w: 2500, h: 1666, category: "weddings" },
+  { src: "/Weddings/IMG_4515.JPG", w: 2500, h: 1666, category: "weddings" },
+  //fin de las bodas
+  { src: "/Birthdays/IMG_4481.JPG", w: 1800, h: 1080, category: "birthdays" },
+  { src: "/Birthdays/IMG_4495.JPG", w: 1800, h: 1080, category: "birthdays" },
+  { src: "/Birthdays/IMG_4513.JPG", w: 1800, h: 1080, category: "birthdays" },
+  { src: "/Birthdays/IMG_4516.JPG", w: 1800, h: 1080, category: "birthdays" },
+  { src: "/Birthdays/IMG_4521.JPG", w: 1800, h: 1080, category: "birthdays" },
+  //fin de lo cumples
+  {
+    src: "/Corporate Events/IMG_4492.JPG",
+    w: 2500,
+    h: 1666,
+    category: "corporate",
+  },
+  {
+    src: "/Corporate Events/IMG_4493.JPG",
+    w: 2500,
+    h: 1666,
+    category: "corporate",
+  },
+  {
+    src: "/Corporate Events/IMG_4514.JPG",
+    w: 2500,
+    h: 1666,
+    category: "corporate",
+  },
+  {
+    src: "/Corporate Events/IMG_4519.JPG",
+    w: 2500,
+    h: 1666,
+    category: "corporate",
+  },
+  {
+    src: "/Corporate Events/IMG_4520.JPG",
+    w: 2500,
+    h: 1666,
+    category: "corporate",
+  },
+];
+
+const categories = ["all", "weddings", "birthdays", "corporate"];
 ---
 
-<section class="my-48">
-    <div class="mx-auto max-w-screen-md text-center mb-8 lg:mb-12">
-        <h2 class="mb-4 text-4xl tracking-tight font-extrabold text-black">
-            Step into a world of FUN with our <br /> Photo Booth experience!
-        </h2>
-        <p class="mb-5 font-light text-gray-500 sm:text-xl">
-            All of our packages include DSLR quality images, backdrop of choice, personalize fun props and set up and
-            break down
-        </p>
-    </div>
-    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mx-auto max-w-screen-xl pswp-gallery" id="gallery">
-        <div class="grid gap-4">
-            <a
-                data-pswp-width="2500"
-                data-pswp-height="1666"
-                target="_blank"
-                href="/gallery/1.jpg"
-                class="transition-all"
-            >
-                <img
-                    class="h-auto max-w-full rounded-lg hover:shadow-lg transition-all duration-200 ease-in-out hover:scale-110 scale-90 opacity-90 hover:opacity-100"
-                    src="/gallery/1.jpg"
-                    alt="Happy Click Customers"
-                />
-            </a>
-            <a data-pswp-width="800" data-pswp-height="1080" target="_blank" href="/gallery/11.jpg">
-                <img
-                    class="h-auto max-w-full rounded-lg hover:shadow-lg transition-all duration-200 ease-in-out hover:scale-110 scale-90 opacity-90 hover:opacity-100"
-                    src="/gallery/11.jpg"
-                    alt="Happy Clicks Customers"
-                />
-            </a>
-            <a data-pswp-width="2500" data-pswp-height="1666" target="_blank" href="/gallery/3.jpg">
-                <img
-                    class="h-auto max-w-full rounded-lg hover:shadow-lg transition-all duration-200 ease-in-out hover:scale-110 scale-90 opacity-90 hover:opacity-100"
-                    src="/gallery/3.jpg"
-                    alt="Happy Clicks Customers"
-                />
-            </a>
-        </div>
-        <div class="grid gap-4">
-            <a data-pswp-width="2500" data-pswp-height="1666" target="_blank" href="/gallery/4.jpg">
-                <img
-                    class="h-auto max-w-full rounded-lg hover:shadow-lg transition-all duration-200 ease-in-out hover:scale-110 scale-90 opacity-90 hover:opacity-100"
-                    src="/gallery/4.jpg"
-                    alt="Happy Clicks Customers"
-                />
-            </a>
-            <a data-pswp-width="2500" data-pswp-height="1666" target="_blank" href="/gallery/12.jpg">
-                <img
-                    class="h-auto max-w-full rounded-lg hover:shadow-lg transition-all duration-200 ease-in-out hover:scale-110 scale-90 opacity-90 hover:opacity-100"
-                    src="/gallery/12.jpg"
-                    alt="Happy Clicks Customers"
-                />
-            </a>
-            <a data-pswp-width="2500" data-pswp-height="1666" target="_blank" href="/gallery/6.jpg">
-                <img
-                    class="h-auto max-w-full rounded-lg hover:shadow-lg transition-all duration-200 ease-in-out hover:scale-110 scale-90 opacity-90 hover:opacity-100"
-                    src="/gallery/6.jpg"
-                    alt="Happy Clicks Customers"
-                />
-            </a>
-        </div>
-        <div class="grid gap-4">
-            <a data-pswp-width="2500" data-pswp-height="1666" target="_blank" href="/gallery/7.jpg">
-                <img
-                    class="h-auto max-w-full rounded-lg hover:shadow-lg transition-all duration-200 ease-in-out hover:scale-110 scale-90 opacity-90 hover:opacity-100"
-                    src="/gallery/7.jpg"
-                    alt="Happy Clicks Customers"
-                />
-            </a>
-            <a data-pswp-width="2500" data-pswp-height="1666" target="_blank" href="/gallery/8.jpg">
-                <img
-                    class="h-auto max-w-full rounded-lg hover:shadow-lg transition-all duration-200 ease-in-out hover:scale-110 scale-90 opacity-90 hover:opacity-100"
-                    src="/gallery/8.jpg"
-                    alt="Happy Clicks Customers"
-                />
-            </a>
-            <a data-pswp-width="800" data-pswp-height="1080" target="_blank" href="/gallery/9.jpg">
-                <img
-                    class="h-auto max-w-full rounded-lg hover:shadow-lg transition-all duration-200 ease-in-out hover:scale-110 scale-90 opacity-90 hover:opacity-100"
-                    src="/gallery/9.jpg"
-                    alt="Happy Clicks Customers"
-                />
-            </a>
-        </div>
-        <div class="grid gap-4">
-            <a data-pswp-width="800" data-pswp-height="1080" target="_blank" href="/gallery/10.jpg">
-                <img
-                    class="h-auto max-w-full rounded-lg hover:shadow-lg transition-all duration-200 ease-in-out hover:scale-110 scale-90 opacity-90 hover:opacity-100"
-                    src="/gallery/10.jpg"
-                    alt="Happy Clicks Customers"
-                />
-            </a>
-            <a data-pswp-width="2500" data-pswp-height="1666" target="_blank" href="/gallery/2.jpg">
-                <img
-                    class="h-auto max-w-full rounded-lg hover:shadow-lg transition-all duration-200 ease-in-out hover:scale-110 scale-90 opacity-90 hover:opacity-100"
-                    src="/gallery/2.jpg"
-                    alt="Happy Clicks Customers"
-                />
-            </a>
-            <a data-pswp-width="2500" data-pswp-height="1666" target="_blank" href="/gallery/5.jpg">
-                <img
-                    class="h-auto max-w-full rounded-lg hover:shadow-lg transition-all duration-200 ease-in-out hover:scale-110 scale-90 opacity-90 hover:opacity-100"
-                    src="/gallery/5.jpg"
-                    alt="Happy Clicks Customers"
-                />
-            </a>
-        </div>
-    </div>
+<section class="my-48" id="gallery-section">
+  <div id="gallery-tabs" role="tablist" class="flex justify-center gap-4 mb-12">
+    {
+      categories.map((cat) => (
+        <button
+          type="button"
+          role="tab"
+          data-category={cat}
+          aria-selected={cat === "all" ? "true" : "false"}
+          class="px-4 py-2 rounded-lg font-semibold capitalize transition border border-black aria-selected:bg-black aria-selected:text-white"
+        >
+          {cat}
+        </button>
+      ))
+    }
+  </div>
+  <div
+    id="gallery"
+    class="grid grid-cols-2 md:grid-cols-4 gap-4 mx-auto max-w-screen-xl pswp-gallery"
+  >
+    {
+      images.map((img, i) => (
+        <a
+          href={img.src}
+          target="_blank"
+          data-pswp-width={img.w}
+          data-pswp-height={img.h}
+          data-category={img.category}
+          class={`inline-block w-full mb-4 transition-all ${i > 7 ? "hidden all-extra" : ""}`}
+          style="break-inside:avoid;"
+        >
+          <img
+            src={img.src}
+            alt="Happy Clicks Customers"
+            loading="lazy"
+            class="w-full h-auto rounded-lg hover:shadow-lg transition-all duration-200 ease-in-out hover:scale-110 scale-90 opacity-90 hover:opacity-100"
+          />
+        </a>
+      ))
+    }
+  </div>
+
+  <div class="flex justify-center mt-8">
+    <button
+      id="load-more"
+      class="px-6 py-3 rounded-lg bg-black text-white font-semibold hover:bg-gray-800 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2"
+    >
+      <svg
+        id="spinner"
+        class="animate-spin h-4 w-4 hidden"
+        fill="none"
+        viewBox="0 0 24 24"
+      >
+        <circle
+          class="opacity-25"
+          cx="12"
+          cy="12"
+          r="10"
+          stroke="currentColor"
+          stroke-width="4"></circle>
+        <path
+          class="opacity-75"
+          fill="currentColor"
+          d="m12 2a10 10 0 0 1 10 10h-4a6 6 0 0 0-6-6z"></path>
+      </svg>
+      <span id="load-more-text">Load more</span>
+    </button>
+  </div>
 </section>
 
 <script>
-    import PhotoSwipeLightBox from 'photoswipe/lightbox';
+  // Funcion para inicializar la galeria
+  function initializeGallery() {
+    const TABS = document.querySelectorAll(
+      "#gallery-tabs [role=tab]"
+    ) as NodeListOf<HTMLButtonElement>;
+    const GALLERY = document.getElementById("gallery") as HTMLElement;
+    const LOAD_BTN = document.getElementById("load-more") as HTMLButtonElement;
 
-    const lightbox = new PhotoSwipeLightBox({
-        gallery: '#gallery',
-        children: 'a',
-        pswpModule: () => import('photoswipe'),
+    if (!TABS.length || !GALLERY || !LOAD_BTN) {
+      console.error("Gallery elements not found");
+      return;
+    }
+
+    let currentCategory = "all";
+    let visibleCount = 8;
+    let lightbox: any = null;
+
+    const setLoadingState = (loading: boolean) => {
+      const spinner = document.getElementById("spinner") as HTMLElement;
+      const loadMoreText = document.getElementById(
+        "load-more-text"
+      ) as HTMLElement;
+
+      if (loading) {
+        LOAD_BTN.disabled = true;
+        spinner.classList.remove("hidden");
+        loadMoreText.textContent = "Loading...";
+      } else {
+        LOAD_BTN.disabled = false;
+        spinner.classList.add("hidden");
+        loadMoreText.textContent = "Load more";
+      }
+    };
+
+    const animateElement = (element: HTMLElement, show: boolean) => {
+      if (show) {
+        element.style.opacity = "0";
+        element.style.transform = "translateY(20px)";
+        element.classList.remove("hidden");
+        element.offsetHeight;
+
+        element.style.transition =
+          "opacity 200ms ease-out, transform 200ms ease-out";
+        element.style.opacity = "1";
+        element.style.transform = "translateY(0)";
+      } else {
+        element.style.transition =
+          "opacity 200ms ease-out, transform 200ms ease-out";
+        element.style.opacity = "0";
+        element.style.transform = "translateY(-20px)";
+
+        setTimeout(() => {
+          element.classList.add("hidden");
+        }, 400);
+      }
+    };
+
+    const initLightbox = async () => {
+      try {
+        if (lightbox && typeof lightbox.destroy === "function") {
+          lightbox.destroy();
+        }
+
+        const { default: PhotoSwipeLightBox } = await import(
+          "photoswipe/lightbox"
+        );
+
+        lightbox = new PhotoSwipeLightBox({
+          gallery: "#gallery",
+          children: "a:not(.hidden)",
+          pswpModule: () => import("photoswipe"),
+        });
+
+        lightbox.init();
+      } catch (error) {
+        console.warn("PhotoSwipe not available:", error);
+      }
+    };
+
+    // Función para sincronizar visibilidad con animaciones
+    const syncVisibility = () => {
+      const links = [...GALLERY.querySelectorAll("a")] as HTMLAnchorElement[];
+
+      // Primero, ocultar elementos que no deben mostrarse
+      links.forEach((a, idx) => {
+        const match =
+          currentCategory === "all" || a.dataset.category === currentCategory;
+        const show = match && (currentCategory !== "all" || idx < visibleCount);
+
+        if (!show && !a.classList.contains("hidden")) {
+          animateElement(a, false);
+        }
+      });
+
+      setTimeout(() => {
+        links.forEach((a, idx) => {
+          const match =
+            currentCategory === "all" || a.dataset.category === currentCategory;
+          const show =
+            match && (currentCategory !== "all" || idx < visibleCount);
+
+          if (show && a.classList.contains("hidden")) {
+            setTimeout(() => {
+              animateElement(a, true);
+            }, idx * 50);
+          }
+        });
+        setTimeout(() => {
+          initLightbox();
+        }, 500);
+      }, 100);
+
+      const shouldShowLoadMore =
+        currentCategory === "all" && visibleCount < links.length;
+      if (shouldShowLoadMore) {
+        LOAD_BTN.style.display = "flex";
+        LOAD_BTN.style.opacity = "1";
+      } else {
+        LOAD_BTN.style.opacity = "0";
+        setTimeout(() => {
+          LOAD_BTN.style.display = "none";
+        }, 300);
+      }
+    };
+
+    TABS.forEach((tab: HTMLButtonElement) => {
+      tab.addEventListener("click", (e: Event) => {
+        e.preventDefault();
+
+        TABS.forEach((t: HTMLButtonElement) =>
+          t.setAttribute("aria-selected", "false")
+        );
+        tab.setAttribute("aria-selected", "true");
+
+        currentCategory = tab.dataset.category || "all";
+        visibleCount = 8;
+
+        syncVisibility();
+      });
     });
 
-    lightbox.init();
+    LOAD_BTN.addEventListener("click", (e: Event) => {
+      e.preventDefault();
+
+      setLoadingState(true);
+
+      visibleCount += 8;
+      syncVisibility();
+
+      setTimeout(() => {
+        setLoadingState(false);
+      }, 1000);
+    });
+
+    // Inicializar
+    syncVisibility();
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initializeGallery);
+  } else {
+    initializeGallery();
+  }
+
+  document.addEventListener("astro:page-load", initializeGallery);
 </script>
+
+<style>
+  .hidden {
+    display: none !important;
+  }
+
+  [role="tab"][aria-selected="true"] {
+    background-color: black;
+    color: white;
+  }
+
+  [role="tab"][aria-selected="false"] {
+    background-color: transparent;
+    color: black;
+  }
+
+  [role="tab"] {
+    transition: all 300ms ease-in-out;
+  }
+
+  [role="tab"]:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  #gallery a {
+    transition:
+      opacity 300ms ease-out,
+      transform 300ms ease-out;
+  }
+
+  #load-more {
+    transition:
+      opacity 300ms ease-in-out,
+      background-color 300ms ease-in-out,
+      transform 200ms ease-in-out;
+  }
+
+  #load-more:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  }
+
+  #gallery a img {
+    transition: all 300ms ease-in-out;
+  }
+
+  #gallery a:hover img {
+    transform: scale(1.05);
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Estilos para el spinner */
+  @keyframes spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  .animate-spin {
+    animation: spin 1s linear infinite;
+  }
+</style>
