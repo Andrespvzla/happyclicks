@@ -82,15 +82,30 @@
                 />
             </div>
             <div>
-                <label for="type-event" class="block mb-2 text-sm font-medium text-black">Type of event</label>
+                <label for="phone" class="block mb-2 text-sm font-medium text-black">Phone number</label>
                 <input
-                    type="text"
+                    type="tel"
+                    id="phone"
+                    name="phone"
+                    class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5"
+                    placeholder="(470) 716-5087"
+                    required
+                />
+            </div>
+            <div>
+                <label for="type-event" class="block mb-2 text-sm font-medium text-black">Type of event</label>
+                <select
                     id="type-event"
                     name="type-event"
                     class="block p-3 w-full text-sm text-black bg-gray-50 rounded-lg border border-gray-300 shadow-sm focus:ring-primary-500 focus:border-primary-500"
-                    placeholder="Let us know about your event"
                     required
-                />
+                >
+                    <option value="" disabled selected>Select your event type</option>
+                    <option value="weddings">Weddings</option>
+                    <option value="birthdays">Birthdays</option>
+                    <option value="corporate">Corporate</option>
+                    <option value="other">Other</option>
+                </select>
             </div>
             <div class="sm:col-span-2">
                 <label for="message" class="block mb-2 text-sm font-medium text-black">Add details</label>
