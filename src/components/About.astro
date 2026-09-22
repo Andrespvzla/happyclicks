@@ -1,7 +1,12 @@
+---
+import { Image } from 'astro:assets';
+import aboutPhoto from '../assets/about/13.jpeg';
+---
+
 <section id="about">
     <div class="wrap about-grid">
         <div class="frame-img reveal">
-            <img class="pic" src="/gallery/13.jpeg" alt="Happy Clicks Photo Booth in action" />
+            <Image class="pic" src={aboutPhoto} alt="Happy Clicks Photo Booth in action" width={700} format="webp" />
             <span class="plabel">The Booth</span>
         </div>
         <div class="about-copy reveal">

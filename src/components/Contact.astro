@@ -56,14 +56,29 @@
                 </div>
             </div>
             <div class="field">
-                <label for="type-event">Type of event</label>
-                <select id="type-event" name="type-event" required>
-                    <option value="" disabled selected>Select your event type</option>
-                    <option value="weddings">Weddings</option>
-                    <option value="birthdays">Birthdays</option>
-                    <option value="corporate">Corporate</option>
-                    <option value="other">Other</option>
-                </select>
+                <label id="event-label">Type of event</label>
+                <div class="cselect" data-name="type-event">
+                    <button
+                        type="button"
+                        id="event-trigger"
+                        class="cselect-trigger"
+                        aria-haspopup="listbox"
+                        aria-expanded="false"
+                        aria-labelledby="event-label event-trigger"
+                    >
+                        <span class="cselect-value">Select your event type</span>
+                        <svg class="cselect-arrow" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6"
+                            ><path d="M5 7.5l5 5 5-5" stroke-linecap="round" stroke-linejoin="round"></path></svg
+                        >
+                    </button>
+                    <ul class="cselect-list" role="listbox" id="event-listbox" tabindex="-1" aria-labelledby="event-label">
+                        <li role="option" data-value="weddings">Weddings</li>
+                        <li role="option" data-value="birthdays">Birthdays</li>
+                        <li role="option" data-value="corporate">Corporate</li>
+                        <li role="option" data-value="other">Other</li>
+                    </ul>
+                    <input type="hidden" name="type-event" value="" />
+                </div>
             </div>
             <div class="field">
                 <label for="message">Add details</label>
@@ -77,3 +92,106 @@
         </form>
     </div>
 </section>
+
+<script>
+    function initEventSelect() {
+        const wrap = document.querySelector('.cselect') as HTMLElement | null;
+        const trigger = document.getElementById('event-trigger') as HTMLButtonElement | null;
+        const list = document.getElementById('event-listbox') as HTMLUListElement | null;
+        const valueLabel = trigger?.querySelector('.cselect-value') as HTMLElement | null;
+        const hiddenInput = wrap?.querySelector('input[type="hidden"]') as HTMLInputElement | null;
+        const form = wrap?.closest('form');
+        const options = list ? ([...list.querySelectorAll('li')] as HTMLLIElement[]) : [];
+
+        if (!wrap || !trigger || !list || !valueLabel || !hiddenInput || !options.length) return;
+
+        let activeIndex = -1;
+
+        const setActive = (index: number) => {
+            options.forEach((li, i) => li.classList.toggle('active', i === index));
+            activeIndex = index;
+            options[index]?.scrollIntoView({ block: 'nearest' });
+        };
+
+        const open = () => {
+            list.classList.add('open');
+            trigger.setAttribute('aria-expanded', 'true');
+            const selectedIndex = options.findIndex((li) => li.getAttribute('aria-selected') === 'true');
+            setActive(selectedIndex >= 0 ? selectedIndex : 0);
+        };
+
+        const close = () => {
+            list.classList.remove('open');
+            trigger.setAttribute('aria-expanded', 'false');
+            activeIndex = -1;
+            options.forEach((li) => li.classList.remove('active'));
+        };
+
+        const isOpen = () => list.classList.contains('open');
+
+        const selectOption = (li: HTMLLIElement) => {
+            options.forEach((o) => o.removeAttribute('aria-selected'));
+            li.setAttribute('aria-selected', 'true');
+            valueLabel.textContent = li.textContent;
+            hiddenInput.value = li.dataset.value ?? '';
+            trigger.classList.add('has-value');
+            wrap.classList.remove('invalid');
+            close();
+        };
+
+        trigger.addEventListener('click', () => {
+            if (isOpen()) {
+                close();
+            } else {
+                open();
+            }
+        });
+
+        options.forEach((li) => {
+            li.addEventListener('click', () => selectOption(li));
+            li.addEventListener('mouseenter', () => {
+                activeIndex = options.indexOf(li);
+                options.forEach((o) => o.classList.toggle('active', o === li));
+            });
+        });
+
+        trigger.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowDown' || e.key === 'ArrowUp' || e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                if (!isOpen()) {
+                    open();
+                    return;
+                }
+            }
+            if (e.key === 'ArrowDown') {
+                setActive((activeIndex + 1) % options.length);
+            } else if (e.key === 'ArrowUp') {
+                setActive((activeIndex - 1 + options.length) % options.length);
+            } else if ((e.key === 'Enter' || e.key === ' ') && activeIndex >= 0) {
+                selectOption(options[activeIndex]);
+            } else if (e.key === 'Escape') {
+                close();
+            }
+        });
+
+        document.addEventListener('click', (e) => {
+            if (!wrap.contains(e.target as Node)) close();
+        });
+
+        form?.addEventListener('submit', (e) => {
+            if (!hiddenInput.value) {
+                e.preventDefault();
+                wrap.classList.add('invalid');
+                open();
+                trigger.focus();
+            }
+        });
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initEventSelect);
+    } else {
+        initEventSelect();
+    }
+    document.addEventListener('astro:page-load', initEventSelect);
+</script>

@@ -40,6 +40,7 @@ const { title } = Astro.props;
             --line: rgba(23, 21, 15, 0.12);
             --line-gold: rgba(168, 134, 60, 0.34);
             --maxw: 1200px;
+            --header-h: 148px;
         }
 
         * {
@@ -198,7 +199,7 @@ const { title } = Astro.props;
             flex: 0 0 auto;
         }
         .brand img {
-            width: 84px;
+            width: 120px;
             height: auto;
             display: block;
         }
@@ -328,7 +329,7 @@ const { title } = Astro.props;
         }
         .stat {
             flex: 1 1 25%;
-            padding: 22px 8px;
+            padding: 15px 8px;
             text-align: center;
         }
         .stat + .stat {
@@ -363,7 +364,7 @@ const { title } = Astro.props;
         /* HERO (video) */
         .hero-video {
             position: relative;
-            min-height: 100svh;
+            min-height: calc(100svh - var(--header-h));
             display: flex;
             align-items: center;
             justify-content: center;
@@ -386,7 +387,7 @@ const { title } = Astro.props;
             z-index: -1;
         }
         .hero-video .wrap {
-            padding: 150px 32px 60px;
+            padding: 40px 32px;
             max-width: 900px;
         }
         .hero-video .eyebrow {
@@ -399,26 +400,26 @@ const { title } = Astro.props;
         }
         .hero-video h1 {
             color: #fff;
-            font-size: clamp(3rem, 8vw, 6rem);
+            font-size: clamp(2.4rem, 6.4vw, 4.6rem);
             letter-spacing: -0.01em;
-            margin: 1.5rem 0 0;
+            margin: 1rem 0 0;
         }
         .hero-video h1 .it {
             color: var(--gold-bright);
         }
         .hero-video .lead {
             color: rgba(255, 255, 255, 0.82);
-            font-size: 1.15rem;
+            font-size: 1.05rem;
             font-weight: 300;
             max-width: 46ch;
-            margin: 1.8rem auto 0;
+            margin: 1rem auto 0;
         }
         .hero-cta {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
             gap: 1rem;
-            margin-top: 2.4rem;
+            margin-top: 1.4rem;
         }
         .hero-video .btn.ghost {
             border-color: rgba(255, 255, 255, 0.4);
@@ -431,7 +432,7 @@ const { title } = Astro.props;
         .hero-video .stat-row {
             border-color: rgba(255, 255, 255, 0.24);
             max-width: 680px;
-            margin: clamp(40px, 5vw, 64px) auto 0;
+            margin: clamp(20px, 3vw, 32px) auto 0;
         }
         .hero-video .stat + .stat {
             border-left: 1px solid rgba(255, 255, 255, 0.24);
@@ -706,7 +707,7 @@ const { title } = Astro.props;
             display: grid;
             grid-template-columns: 0.9fr 1.1fr;
             gap: 64px;
-            align-items: start;
+            align-items: center;
         }
         @media (max-width: 900px) {
             .contact-grid {
@@ -776,7 +777,6 @@ const { title } = Astro.props;
             margin-bottom: 0.5rem;
         }
         .field input,
-        .field select,
         .field textarea {
             width: 100%;
             background: transparent;
@@ -793,13 +793,85 @@ const { title } = Astro.props;
             color: var(--muted);
             opacity: 0.6;
         }
-        .field select {
+
+        /* Custom dropdown (replaces native <select>, whose popup can't be restyled) */
+        .cselect {
+            position: relative;
+        }
+        .cselect-trigger {
+            width: 100%;
+            background: transparent;
+            border: 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 0.6rem;
+            font: inherit;
+            font-size: 1.05rem;
+            font-family: 'Onest';
+            color: var(--muted);
+            padding: 0.3rem 0;
+            cursor: pointer;
+            text-align: left;
+        }
+        .cselect-trigger.has-value {
+            color: var(--ink);
+        }
+        .cselect-arrow {
+            width: 13px;
+            height: 13px;
+            flex: 0 0 auto;
+            color: var(--gold);
+            transition: transform 0.25s ease;
+        }
+        .cselect-trigger[aria-expanded='true'] .cselect-arrow {
+            transform: rotate(180deg);
+        }
+        .cselect-list {
+            position: absolute;
+            top: calc(100% + 12px);
+            left: 0;
+            right: 0;
+            z-index: 40;
+            list-style: none;
+            margin: 0;
+            padding: 6px;
+            max-height: 260px;
+            overflow-y: auto;
+            background: var(--bg-2);
+            border: 1px solid var(--line-gold);
+            box-shadow: 0 24px 48px rgba(23, 21, 15, 0.16);
+            opacity: 0;
+            transform: translateY(-8px);
+            pointer-events: none;
+            transition:
+                opacity 0.2s ease,
+                transform 0.2s ease;
+        }
+        .cselect-list.open {
+            opacity: 1;
+            transform: none;
+            pointer-events: auto;
+        }
+        .cselect-list li {
+            padding: 0.7rem 0.9rem;
+            font-size: 0.95rem;
             color: var(--ink);
             cursor: pointer;
+            transition:
+                background 0.15s ease,
+                color 0.15s ease;
         }
-        .field select option {
-            background: var(--bg-2);
-            color: var(--ink);
+        .cselect-list li.active {
+            background: var(--bg-3);
+            color: var(--gold-deep);
+        }
+        .cselect-list li[aria-selected='true'] {
+            color: var(--gold);
+            font-weight: 500;
+        }
+        .cselect.invalid .cselect-trigger {
+            color: #b3452e;
         }
         .field::after {
             content: '';
@@ -907,5 +979,33 @@ const { title } = Astro.props;
             initReveal();
         }
         document.addEventListener('astro:page-load', initReveal);
+
+        // Smooth-scroll to in-page sections without leaving a #hash in the address bar.
+        function initHashlessNav() {
+            document.querySelectorAll('a[href^="#"]').forEach((link) => {
+                link.addEventListener('click', (e) => {
+                    const hash = link.getAttribute('href');
+                    if (!hash || hash.length < 2) return;
+                    const target = document.getElementById(hash.slice(1));
+                    if (!target) return;
+                    e.preventDefault();
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    history.replaceState(null, '', window.location.pathname + window.location.search);
+                });
+            });
+
+            if (window.location.hash) {
+                window.setTimeout(() => {
+                    history.replaceState(null, '', window.location.pathname + window.location.search);
+                }, 400);
+            }
+        }
+
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initHashlessNav);
+        } else {
+            initHashlessNav();
+        }
+        document.addEventListener('astro:page-load', initHashlessNav);
     </script>
 </html>
