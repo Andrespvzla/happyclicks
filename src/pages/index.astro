@@ -9,21 +9,51 @@ import Contact from '../components/Contact.astro';
 ---
 
 <Layout title="HappyClicks | Photo Booth">
-    <main>
-        <section class="relative flex items-center justify-center h-screen overflow-hidden">
-            <div class="py-8 px-4 mx-auto max-w-screen-xl text-center z-30 text-white">
-                <h1 class="mb-2 text-6xl font-extrabold">Happy Clicks Photo Booth</h1>
-                <p class="mb-4 text-3xl">Where Every Click Becomes a Memory. Capturing Joy, One Click at a Time.</p>
-                <a
-                    class="text-xl text-white cursor-pointer bg-black focus:ring-4 focus:outline-none font-medium rounded-lg px-5 py-2.5 text-center inline-flex items-center hover:shadow-lg transition-all duration-200 ease-in-out hover:scale-110 scale-90 gap-x-2 opacity-90 hover:opacity-100"
-                    href="#contact">Contact Us</a
-                >
-            </div>
-            <video playsinline autoplay loop muted class="absolute z-10 w-auto min-w-full min-h-full max-w-none">
+    <main id="top">
+        <section class="hero-video">
+            <video playsinline autoplay loop muted>
                 <source src="/video.mov" type="video/mp4" />
                 Your browser does not support the video tag.
             </video>
+            <div class="wrap">
+                <span class="eyebrow">Atlanta, GA &middot; Luxury Photo Booth</span>
+                <h1>Where every click<br />becomes a <span class="it">memory</span>.</h1>
+                <p class="lead">
+                    A refined photo-booth experience for weddings, celebrations and corporate events — DSLR quality,
+                    elegant prints, and a night your guests won't forget.
+                </p>
+                <div class="hero-cta">
+                    <a class="btn solid" href="#contact">Get a Quote</a>
+                    <a class="btn ghost" href="#prices">View packages</a>
+                </div>
+                <div class="stat-row">
+                    <div class="stat"><b class="tnum">70+</b><span>Events</span></div>
+                    <div class="stat"><b class="tnum">17,500+</b><span>Smiles Captured</span></div>
+                    <div class="stat"><b>DSLR</b><span>Studio Quality</span></div>
+                    <div class="stat"><b class="tnum">5.0</b><span>Star Rated</span></div>
+                </div>
+            </div>
         </section>
+
+        <div class="strip-bar" aria-hidden="true">
+            <div class="strip-track">
+                <span
+                    ><em>Weddings</em><i>&#9670;</i><em>Birthdays</em><i>&#9670;</i><em>Corporate</em><i
+                        >&#9670;</i
+                    ><em>Engagements</em><i>&#9670;</i><em>Quinceañeras</em><i>&#9670;</i><em>Graduations</em><i
+                        >&#9670;</i
+                    ></span
+                >
+                <span
+                    ><em>Weddings</em><i>&#9670;</i><em>Birthdays</em><i>&#9670;</i><em>Corporate</em><i
+                        >&#9670;</i
+                    ><em>Engagements</em><i>&#9670;</i><em>Quinceañeras</em><i>&#9670;</i><em>Graduations</em><i
+                        >&#9670;</i
+                    ></span
+                >
+            </div>
+        </div>
+
         <About />
         <Prices />
         <Gallery />
