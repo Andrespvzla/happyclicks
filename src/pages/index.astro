@@ -1,7 +1,9 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Prices from '../components/Prices.astro';
-import About from '../components/About.astro';
+import WhatWeDo from '../components/WhatWeDo.astro';
+import AboutUs from '../components/AboutUs.astro';
+import Quote from '../components/Quote.astro';
 import Gallery from '../components/Gallery.astro';
 import Testimonials from '../components/Testimonials.astro';
 import Footer from '../components/Footer.astro';
@@ -23,14 +25,8 @@ import Contact from '../components/Contact.astro';
                     elegant prints, and a night your guests won't forget.
                 </p>
                 <div class="hero-cta">
-                    <a class="btn solid" href="#contact">Get a Quote</a>
+                    <a class="btn solid" href="#quote">Get a Quote</a>
                     <a class="btn ghost" href="#prices">View packages</a>
-                </div>
-                <div class="stat-row">
-                    <div class="stat"><b class="tnum">70+</b><span>Events</span></div>
-                    <div class="stat"><b class="tnum">17,500+</b><span>Smiles Captured</span></div>
-                    <div class="stat"><b>DSLR</b><span>Studio Quality</span></div>
-                    <div class="stat"><b class="tnum">5.0</b><span>Star Rated</span></div>
                 </div>
             </div>
         </section>
@@ -38,14 +34,14 @@ import Contact from '../components/Contact.astro';
         <div class="strip-bar" aria-hidden="true">
             <div class="strip-track">
                 <span
-                    ><em>Weddings</em><i>&#9670;</i><em>Birthdays</em><i>&#9670;</i><em>Corporate</em><i
+                    ><em>Weddings</em><i>&#9670;</i><em>Birthdays</em><i>&#9670;</i><em>Baby Showers</em><i>&#9670;</i><em>Corporate</em><i
                         >&#9670;</i
                     ><em>Engagements</em><i>&#9670;</i><em>Quinceañeras</em><i>&#9670;</i><em>Graduations</em><i
                         >&#9670;</i
                     ></span
                 >
                 <span
-                    ><em>Weddings</em><i>&#9670;</i><em>Birthdays</em><i>&#9670;</i><em>Corporate</em><i
+                    ><em>Weddings</em><i>&#9670;</i><em>Birthdays</em><i>&#9670;</i><em>Baby Showers</em><i>&#9670;</i><em>Corporate</em><i
                         >&#9670;</i
                     ><em>Engagements</em><i>&#9670;</i><em>Quinceañeras</em><i>&#9670;</i><em>Graduations</em><i
                         >&#9670;</i
@@ -54,11 +50,13 @@ import Contact from '../components/Contact.astro';
             </div>
         </div>
 
-        <About />
+        <WhatWeDo />
         <Prices />
         <Gallery />
         <Testimonials />
+        <AboutUs />
         <Contact />
+        <Quote />
         <Footer />
     </main>
 </Layout>

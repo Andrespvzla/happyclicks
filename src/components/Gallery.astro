@@ -7,8 +7,8 @@ const weddingModules = import.meta.glob<{ default: ImageMetadata }>(
   "/src/assets/gallery/weddings/*.{jpg,jpeg,JPG,JPEG}",
   { eager: true }
 );
-const birthdayModules = import.meta.glob<{ default: ImageMetadata }>(
-  "/src/assets/gallery/birthdays/*.{jpg,jpeg,JPG,JPEG}",
+const celebrationModules = import.meta.glob<{ default: ImageMetadata }>(
+  "/src/assets/gallery/celebrations/*.{jpg,jpeg,JPG,JPEG}",
   { eager: true }
 );
 const corporateModules = import.meta.glob<{ default: ImageMetadata }>(
@@ -22,14 +22,28 @@ function toEntries(
 ) {
   return Object.keys(modules)
     .sort()
-    .map((path) => ({ image: modules[path].default, category }));
+    .map((path) => ({
+      image: modules[path].default,
+      category,
+      // Newest event photos are prefixed with "0-" so they lead the grid
+      isNew: path.split("/").pop()!.startsWith("0-"),
+    }));
 }
 
-const rawImages = [
-  ...toEntries(weddingModules, "weddings"),
-  ...toEntries(birthdayModules, "birthdays"),
-  ...toEntries(corporateModules, "corporate"),
+const groups = [
+  toEntries(weddingModules, "weddings"),
+  toEntries(celebrationModules, "celebrations"),
+  toEntries(corporateModules, "corporate"),
 ];
+
+// Interleave the newest photos across categories so the "all" view shows every event type up front
+const newest = groups.map((g) => g.filter((e) => e.isNew));
+const interleaved = Array.from(
+  { length: Math.max(...newest.map((g) => g.length)) },
+  (_, i) => newest.map((g) => g[i]).filter((e) => e !== undefined)
+).flat();
+
+const rawImages = [...interleaved, ...groups.flatMap((g) => g.filter((e) => !e.isNew))];
 
 // Pre-generate a lighter webp for the lightbox (full original files are multi-MB DSLR JPEGs)
 const images = await Promise.all(
@@ -39,7 +53,7 @@ const images = await Promise.all(
   })
 );
 
-const categories = ["all", "weddings", "birthdays", "corporate"];
+const categories = ["all", "weddings", "celebrations", "corporate"];
 ---
 
 <section id="gallery">

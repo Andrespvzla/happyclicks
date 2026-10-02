@@ -1,0 +1,46 @@
+---
+import { Image } from 'astro:assets';
+import teamPhoto from '../assets/team/paola-manuel.jpg';
+---
+
+<section id="about-us">
+    <div class="wrap story-grid">
+        <div class="story-media reveal">
+            <figure class="frame-img">
+                <Image class="pic" src={teamPhoto} alt="Paola and Manuel, founders of Happy Clicks" width={900} format="webp" />
+                <figcaption class="plabel">Paola &amp; Manuel</figcaption>
+            </figure>
+        </div>
+        <div class="about-copy story-copy reveal">
+            <span class="eyebrow">About Us</span>
+            <h2 style="font-size:clamp(2.2rem,4.6vw,3.4rem);margin-top:1rem">
+                Happy Clicks started with our own <span class="it gold">love story</span>.
+            </h2>
+            <p>
+                We’re high school sweethearts who have grown through many seasons of life together, and in 2023, we
+                celebrated one of our biggest milestones: our wedding. While planning our big day, we knew we wanted a
+                photo booth, but we had a very specific vision. We wanted something elevated, with beautiful,
+                professional quality photos and an experience our guests would genuinely enjoy.
+            </p>
+            <p>After our wedding, we kept coming back to one idea:</p>
+            <p class="story-quote">What if we created the photo booth experience we had been looking for ourselves?</p>
+            <p>And that’s how Happy Clicks was born.</p>
+            <p>
+                To us, Happy Clicks has never been just about taking pictures. We’re in the business of entertainment,
+                connection, and memories. A photo booth is an icebreaker, a place where friends, family, coworkers, and
+                even strangers can come together, be silly, laugh, and create memories.
+            </p>
+            <p>
+                From weddings and graduations to corporate events and celebrations of every kind, our goal is always
+                the same: create an inviting experience, deliver beautiful photos worth keeping and sharing, and make
+                sure people have fun.
+            </p>
+            <p>
+                Happy Clicks is something we’ve built together with so much love, and we bring that same care into
+                every event and every client we work with. We know we’re not just showing up with a photo booth. We’re
+                being trusted with a small part of someone’s special day, and we truly love being part of it.
+            </p>
+            <p class="sig">— Paola &amp; Manuel</p>
+        </div>
+    </div>
+</section>

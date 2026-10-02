@@ -1,0 +1,51 @@
+---
+import { Image } from 'astro:assets';
+import printerPhoto from '../assets/about/13.jpeg';
+import boothPhoto from '../assets/about/14.jpeg';
+---
+
+<section id="about">
+    <div class="wrap about-grid">
+        <div class="about-copy reveal">
+            <span class="eyebrow">What we do</span>
+            <h2 style="font-size:clamp(2.2rem,4.6vw,3.4rem);margin-top:1rem">
+                We create memories,<br />not just photographs.
+            </h2>
+            <p>
+                Happy Clicks is more than just a photo booth — it's an experience that adds a fun, vibrant, and
+                unforgettable touch to any event. Our professional DSLR cameras capture moments of joy, laughter, and
+                celebration in beautiful, high-quality photos.
+            </p>
+            <p>
+                With customizable backdrops, fun props, and instant prints, every photo becomes a keepsake and every
+                moment becomes a memory. Whether it's a wedding, birthday, corporate event, or special celebration,
+                our friendly and professional team is dedicated to making your experience fun, seamless, and
+                memorable.
+            </p>
+        </div>
+        <div class="duo reveal">
+            <figure class="frame-img">
+                <Image class="pic pic-booth" src={boothPhoto} alt="The Happy Clicks photo booth" width={560} format="webp" />
+                <figcaption class="plabel">The Booth</figcaption>
+            </figure>
+            <figure class="frame-img">
+                <Image
+                    class="pic pic-printer"
+                    src={printerPhoto}
+                    alt="The Happy Clicks instant photo printer"
+                    width={560}
+                    format="webp"
+                />
+                <figcaption class="plabel">The Printer</figcaption>
+            </figure>
+        </div>
+    </div>
+    <div class="wrap">
+        <div class="stat-row reveal">
+            <div class="stat"><b class="tnum">70+</b><span>Events</span></div>
+            <div class="stat"><b class="tnum">17,500+</b><span>Smiles Captured</span></div>
+            <div class="stat"><b>DSLR</b><span>Studio Quality</span></div>
+            <div class="stat"><b class="tnum">5.0</b><span>Star Rated</span></div>
+        </div>
+    </div>
+</section>

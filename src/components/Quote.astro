@@ -1,0 +1,194 @@
+<section id="quote">
+    <div class="wrap quote-wrap">
+        <div class="sec-head center reveal" style="max-width:640px">
+            <span class="eyebrow c">Get a Quote</span>
+            <h2>Ready to make it<br />unforgettable?</h2>
+            <p class="sec-sub">Fill out your event details below and we'll get back to you as soon as possible.</p>
+        </div>
+        <form action="https://formspree.io/f/xayranzj" method="POST" class="reveal">
+            <div class="form-row">
+                <div class="field">
+                    <label for="email">Your email</label>
+                    <input id="email" type="email" name="email" placeholder="you@email.com" required />
+                </div>
+                <div class="field">
+                    <label for="phone">Phone number</label>
+                    <input
+                        id="phone"
+                        type="tel"
+                        name="phone"
+                        inputmode="tel"
+                        autocomplete="tel"
+                        maxlength="14"
+                        pattern="\(\d{3}\) \d{3}-\d{4}"
+                        title="10-digit US phone number"
+                        placeholder="(555) 123-4567"
+                        required
+                    />
+                </div>
+            </div>
+            <div class="field">
+                <label id="event-label">Type of event</label>
+                <div class="cselect" data-name="type-event">
+                    <button
+                        type="button"
+                        id="event-trigger"
+                        class="cselect-trigger"
+                        aria-haspopup="listbox"
+                        aria-expanded="false"
+                        aria-labelledby="event-label event-trigger"
+                    >
+                        <span class="cselect-value">Select your event type</span>
+                        <svg class="cselect-arrow" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6"
+                            ><path d="M5 7.5l5 5 5-5" stroke-linecap="round" stroke-linejoin="round"></path></svg
+                        >
+                    </button>
+                    <ul class="cselect-list" role="listbox" id="event-listbox" tabindex="-1" aria-labelledby="event-label">
+                        <li role="option" data-value="weddings">Weddings</li>
+                        <li role="option" data-value="birthdays">Birthdays</li>
+                        <li role="option" data-value="showers">Baby &amp; Bridal Showers</li>
+                        <li role="option" data-value="corporate">Corporate</li>
+                        <li role="option" data-value="other">Other</li>
+                    </ul>
+                    <input type="hidden" name="type-event" value="" />
+                </div>
+            </div>
+            <div class="field">
+                <label for="message">Add details</label>
+                <textarea
+                    id="message"
+                    name="message"
+                    rows="4"
+                    placeholder="Name, number of guests, location and date"></textarea>
+            </div>
+            <button class="btn solid" type="submit">Get a Quote</button>
+        </form>
+    </div>
+</section>
+
+<script>
+    function initEventSelect() {
+        const wrap = document.querySelector('.cselect') as HTMLElement | null;
+        const trigger = document.getElementById('event-trigger') as HTMLButtonElement | null;
+        const list = document.getElementById('event-listbox') as HTMLUListElement | null;
+        const valueLabel = trigger?.querySelector('.cselect-value') as HTMLElement | null;
+        const hiddenInput = wrap?.querySelector('input[type="hidden"]') as HTMLInputElement | null;
+        const form = wrap?.closest('form');
+        const options = list ? ([...list.querySelectorAll('li')] as HTMLLIElement[]) : [];
+
+        if (!wrap || !trigger || !list || !valueLabel || !hiddenInput || !options.length) return;
+
+        let activeIndex = -1;
+
+        const setActive = (index: number) => {
+            options.forEach((li, i) => li.classList.toggle('active', i === index));
+            activeIndex = index;
+            options[index]?.scrollIntoView({ block: 'nearest' });
+        };
+
+        const open = () => {
+            list.classList.add('open');
+            trigger.setAttribute('aria-expanded', 'true');
+            const selectedIndex = options.findIndex((li) => li.getAttribute('aria-selected') === 'true');
+            setActive(selectedIndex >= 0 ? selectedIndex : 0);
+        };
+
+        const close = () => {
+            list.classList.remove('open');
+            trigger.setAttribute('aria-expanded', 'false');
+            activeIndex = -1;
+            options.forEach((li) => li.classList.remove('active'));
+        };
+
+        const isOpen = () => list.classList.contains('open');
+
+        const selectOption = (li: HTMLLIElement) => {
+            options.forEach((o) => o.removeAttribute('aria-selected'));
+            li.setAttribute('aria-selected', 'true');
+            valueLabel.textContent = li.textContent;
+            hiddenInput.value = li.dataset.value ?? '';
+            trigger.classList.add('has-value');
+            wrap.classList.remove('invalid');
+            close();
+        };
+
+        trigger.addEventListener('click', () => {
+            if (isOpen()) {
+                close();
+            } else {
+                open();
+            }
+        });
+
+        options.forEach((li) => {
+            li.addEventListener('click', () => selectOption(li));
+            li.addEventListener('mouseenter', () => {
+                activeIndex = options.indexOf(li);
+                options.forEach((o) => o.classList.toggle('active', o === li));
+            });
+        });
+
+        trigger.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowDown' || e.key === 'ArrowUp' || e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                if (!isOpen()) {
+                    open();
+                    return;
+                }
+            }
+            if (e.key === 'ArrowDown') {
+                setActive((activeIndex + 1) % options.length);
+            } else if (e.key === 'ArrowUp') {
+                setActive((activeIndex - 1 + options.length) % options.length);
+            } else if ((e.key === 'Enter' || e.key === ' ') && activeIndex >= 0) {
+                selectOption(options[activeIndex]);
+            } else if (e.key === 'Escape') {
+                close();
+            }
+        });
+
+        document.addEventListener('click', (e) => {
+            if (!wrap.contains(e.target as Node)) close();
+        });
+
+        form?.addEventListener('submit', (e) => {
+            if (!hiddenInput.value) {
+                e.preventDefault();
+                wrap.classList.add('invalid');
+                open();
+                trigger.focus();
+            }
+        });
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initEventSelect);
+    } else {
+        initEventSelect();
+    }
+    document.addEventListener('astro:page-load', initEventSelect);
+
+    // Live US phone formatting: (555) 123-4567
+    function formatUSPhone(value: string) {
+        const d = value.replace(/\D/g, '').slice(0, 10);
+        if (d.length < 4) return d;
+        if (d.length < 7) return `(${d.slice(0, 3)}) ${d.slice(3)}`;
+        return `(${d.slice(0, 3)}) ${d.slice(3, 6)}-${d.slice(6)}`;
+    }
+
+    function initPhoneInput() {
+        const input = document.getElementById('phone') as HTMLInputElement | null;
+        if (!input || input.dataset.formatted) return;
+        input.dataset.formatted = 'true';
+        input.addEventListener('input', () => {
+            input.value = formatUSPhone(input.value);
+        });
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initPhoneInput);
+    } else {
+        initPhoneInput();
+    }
+    document.addEventListener('astro:page-load', initPhoneInput);
+</script>
